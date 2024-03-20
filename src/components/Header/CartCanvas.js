@@ -1,4 +1,5 @@
 import React from "react";
+import { FiMinus, FiPlus } from "react-icons/fi";
 
 const CartCanvas = ({ isCartCanvasOpen, setIsCartCanvasOpen }) => {
     return (
@@ -66,15 +67,25 @@ const CartCanvas = ({ isCartCanvasOpen, setIsCartCanvasOpen }) => {
                                                         <p className="mt-1 text-sm text-gray-500">Salmon</p>
                                                     </div>
                                                     <div className="flex flex-1 items-end justify-between text-sm">
-                                                    <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-    <button data-action="decrement" class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-      <span class="m-auto text-2xl font-thin">−</span>
-    </button>
-    <input type="number" class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="custom-input-number" value="0"/>
-  <button data-action="increment" class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
-    <span class="m-auto text-2xl font-thin">+</span>
-  </button>
-</div>
+                                                        <div class="flex items-center rounded border border-gray-200 px-4">
+                                                            <button
+                                                                type="button"
+                                                                class="inline-flex items-center justify-center text-gray-600"
+                                                            >
+                                                                <FiMinus />
+                                                            </button>
+
+                                                            <span class="h-8 w-12 inline-flex items-center justify-center text-gray-600 ">
+                                                                0
+                                                            </span>
+
+                                                            <button
+                                                                type="button"
+                                                                class="inline-flex items-center justify-center text-gray-600"
+                                                            >
+                                                                <FiPlus />
+                                                            </button>
+                                                        </div>
 
                                                         <div className="flex">
                                                             <button
@@ -110,7 +121,7 @@ const CartCanvas = ({ isCartCanvasOpen, setIsCartCanvasOpen }) => {
                                 </div>
                                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                                     <p>
-                                        or
+                                        or{" "}
                                         <button
                                             type="button"
                                             className="font-medium text-indigo-600 hover:text-indigo-500"

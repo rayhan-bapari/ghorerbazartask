@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+    //add hostname placeholder.co
+    reactStrictMode: true,
+    images: {
+        domains: ["localhost", "placeholder.co"],
+    },
+};
 
 export default nextConfig;
