@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +9,7 @@ import { FiShoppingBag, FiSearch } from "react-icons/fi";
 // Logo
 import logo from "/public/img/logo.webp";
 import CartCanvas from "./CartCanvas";
+import { useSelector } from "react-redux";
 
 // Menu
 const menu = [
@@ -41,7 +42,14 @@ const menu = [
 ];
 
 const Header = () => {
+    const cartItems = useSelector((store) => store.cart);
     const [isCartCanvasOpen, setIsCartCanvasOpen] = useState(false);
+
+    useEffect(() => {
+        if (cartItems.length > 0) {
+            setIsCartCanvasOpen(true);
+        }
+    }, [cartItems]);
 
     const handleCartCanvas = () => {
         setIsCartCanvasOpen(!isCartCanvasOpen);
@@ -79,13 +87,13 @@ const Header = () => {
                     <div className="relative cursor-pointer">
                         <FaRegHeart size={24} />
                         <span className="absolute -top-2 -right-2 w-4 h-4 bg-primary text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                            2
+                            0
                         </span>
                     </div>
                     <div className="relative cursor-pointer" onClick={handleCartCanvas}>
                         <FiShoppingBag size={24} />
                         <span className="absolute -top-2 -right-2 w-4 h-4 bg-primary text-white text-xs font-semibold rounded-full flex items-center justify-center">
-                            2
+                            {cartItems.length}
                         </span>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ export default async function Home() {
 }
 
 async function getproducts() {
-    const res = await fetch("https://dummyapi.online/api/products/");
+    const res = await fetch("https://dummyjson.com/products");
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");

@@ -1,10 +1,17 @@
+"use client";
 import React from "react";
-import { FiMinus, FiPlus } from "react-icons/fi";
+import { useSelector } from "react-redux";
+import CartCanvasProduct from "./CartCanvasProduct";
 
 const CartCanvas = ({ isCartCanvasOpen, setIsCartCanvasOpen }) => {
+    const cartItems = useSelector((store) => store.cart);
+    const totalPrice = cartItems.reduce((acc, item) => {
+        return acc + item.price * item.qty;
+    }, 0);
+
     return (
         <div
-            className={`fixed inset-0 transform ease-in-out duration-500 ${
+            className={`fixed inset-0 transform ease-in-out duration-500  z-50 ${
                 isCartCanvasOpen ? "translate-x-0" : "translate-x-full"
             }
         `}
@@ -47,57 +54,9 @@ const CartCanvas = ({ isCartCanvasOpen, setIsCartCanvasOpen }) => {
                                 <div className="mt-8">
                                     <div className="flow-root">
                                         <ul role="list" className="-my-6 divide-y divide-gray-200">
-                                            <li className="flex py-6">
-                                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                    <img
-                                                        src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg"
-                                                        alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-                                                        className="h-full w-full object-cover object-center"
-                                                    />
-                                                </div>
-
-                                                <div className="ml-4 flex flex-1 flex-col">
-                                                    <div>
-                                                        <div className="flex justify-between text-base font-medium text-gray-900">
-                                                            <h3>
-                                                                <a href="#">Throwback Hip Bag</a>
-                                                            </h3>
-                                                            <p className="ml-4">$90.00</p>
-                                                        </div>
-                                                        <p className="mt-1 text-sm text-gray-500">Salmon</p>
-                                                    </div>
-                                                    <div className="flex flex-1 items-end justify-between text-sm">
-                                                        <div class="flex items-center rounded border border-gray-200 px-4">
-                                                            <button
-                                                                type="button"
-                                                                class="inline-flex items-center justify-center text-gray-600"
-                                                            >
-                                                                <FiMinus />
-                                                            </button>
-
-                                                            <span class="h-8 w-12 inline-flex items-center justify-center text-gray-600 ">
-                                                                0
-                                                            </span>
-
-                                                            <button
-                                                                type="button"
-                                                                class="inline-flex items-center justify-center text-gray-600"
-                                                            >
-                                                                <FiPlus />
-                                                            </button>
-                                                        </div>
-
-                                                        <div className="flex">
-                                                            <button
-                                                                type="button"
-                                                                className="font-medium text-indigo-600 hover:text-indigo-500"
-                                                            >
-                                                                Remove
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            {cartItems.map((item) => (
+                                                <CartCanvasProduct key={item.id} item={item} />
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
@@ -105,8 +64,8 @@ const CartCanvas = ({ isCartCanvasOpen, setIsCartCanvasOpen }) => {
 
                             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                                 <div className="flex justify-between text-base font-medium text-gray-900">
-                                    <p>Subtotal</p>
-                                    <p>$262.00</p>
+                                    <p>Total</p>
+                                    <p>${totalPrice}</p>
                                 </div>
                                 <p className="mt-0.5 text-sm text-gray-500">
                                     Shipping and taxes calculated at checkout.

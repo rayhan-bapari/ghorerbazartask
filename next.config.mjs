@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    //add hostname placeholder.co
     reactStrictMode: true,
     images: {
-        domains: ["localhost", "placeholder.co"],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "cdn.dummyjson.com",
+            },
+        ],
     },
 };
 
