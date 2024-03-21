@@ -27,7 +27,7 @@ header {
 }
 
 .main__menu {
-    @apply flex items-center justify-center h-[50px] border-t border-gray-50;
+    @apply hidden md:flex items-center justify-center h-[50px] border-t border-gray-50;
 }
 
 .menu__list {
