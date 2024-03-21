@@ -48,7 +48,7 @@ const CartCanvasProduct = ({ item }) => {
                 <div>
                     <div className="flex justify-between text-base font-medium text-gray-900">
                         <h3>{item.title}</h3>
-                        <p className="ml-4">${item.price}</p>
+                        <p className="ml-4">${item.price * item.qty}</p>
                     </div>
                     <p className="mt-1 text-sm text-gray-500">Salmon</p>
                 </div>
