@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Product = ({ product }) => {
     const dispatch = useDispatch();
-    const { title, price, thumbnail, category } = product;
+    const { name, price, image, category } = product;
 
     function hadleAddToCart() {
         dispatch(addToCart(product));
@@ -28,14 +28,14 @@ const Product = ({ product }) => {
     return (
         <div class="relative flex w-full flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
             <div class="relative flex h-60 overflow-hidden">
-                <Image class="object-cover" src={thumbnail} alt={title} width={300} height={300} />
+                <Image class="object-cover" src={image?.thumbnail} alt={name} width={300} height={300} />
                 <span class="absolute top-0 left-0 m-2 rounded-full bg-primary px-2 text-center text-sm font-medium text-white">
                     sale
                 </span>
             </div>
             <div class="mt-4 px-5 pb-5">
                 <Link href="#">
-                    <h5 class="text-xl tracking-tight text-slate-900 line-clamp-1">{title}</h5>
+                    <h5 class="text-xl tracking-tight text-slate-900 line-clamp-1">{name}</h5>
                 </Link>
                 <div class="mt-2 mb-5 flex flex-col gap-2">
                     <p class="text-sm font-medium text-gray-500">{category}</p>

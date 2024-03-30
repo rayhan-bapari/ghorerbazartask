@@ -37,3 +37,15 @@ header {
 .cart__canvas {
     @apply absolute top-0 right-0 bg-white w-[350px] h-screen shadow-lg;
 }
+
+.Toastify__progress-bar--success {
+    @apply bg-primary !important;
+}
+
+.Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter svg {
+    @apply fill-primary !important;
+}
+
+.Toastify__progress-bar-theme--light {
+    @apply bg-primary !important;
+}

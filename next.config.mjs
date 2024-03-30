@@ -5,7 +5,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "cdn.dummyjson.com",
+                hostname: "pickbazarlaravel.s3.ap-southeast-1.amazonaws.com",
             },
         ],
     },

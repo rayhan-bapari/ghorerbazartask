@@ -16,7 +16,7 @@ export default async function Home() {
 }
 
 async function getproducts() {
-    const res = await fetch("https://dummyjson.com/products");
+    const res = await fetch("https://grocery-api-xhr9.onrender.com/api/products");
 
     if (!res.ok) {
         throw new Error("Failed to fetch data");
